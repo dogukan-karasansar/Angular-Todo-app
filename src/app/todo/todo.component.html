@@ -1,1 +1,13 @@
-
+<mat-grid-list cols="4" rowHeight="100%">
+  <mat-grid-tile [colspan]="3" [rowspan]="1">
+    <mat-selection-list #todo [multiple]="false">
+      <h1 style="text-align: center;color: blueviolet;">Todo Lists</h1>
+      <mat-list-option *ngFor="let todo of TodoList" [value]="todo">
+        {{ todo }}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <p>Selected Todo: {{ todo.selectedOptions.selected[0]?.value }}</p>
+  </mat-grid-tile>
+</mat-grid-list>
