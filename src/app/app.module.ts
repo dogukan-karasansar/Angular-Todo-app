@@ -5,8 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatListModule } from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 @NgModule({
   declarations: [AppComponent, TodoComponent],
@@ -14,8 +18,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatListModule,
+    MatToolbarModule,
     MatGridListModule,
+    MatIconModule,
+    DragDropModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

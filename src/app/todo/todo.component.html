@@ -1,13 +1,48 @@
-<mat-grid-list cols="4" rowHeight="100%">
-  <mat-grid-tile [colspan]="3" [rowspan]="1">
-    <mat-selection-list #todo [multiple]="false">
-      <h1 style="text-align: center;color: blueviolet;">Todo Lists</h1>
-      <mat-list-option *ngFor="let todo of TodoList" [value]="todo">
-        {{ todo }}
-      </mat-list-option>
-    </mat-selection-list>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="1" [rowspan]="1">
-    <p>Selected Todo: {{ todo.selectedOptions.selected[0]?.value }}</p>
-  </mat-grid-tile>
-</mat-grid-list>
+<mat-toolbar>
+  <span class="title">ToDo App</span>
+</mat-toolbar>
+<div align="center" class="main-container">
+  <div class="example-container">
+    <h2 class="sub-title">To do</h2>
+
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="todo"
+      [cdkDropListConnectedTo]="[doneList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="example-box" *ngFor="let item of todo" cdkDrag>
+        {{ item }}
+      </div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2 class="sub-title">Done</h2>
+
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="[todoList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="example-box" *ngFor="let item of done" cdkDrag>
+        {{ item }}
+      </div>
+    </div>
+  </div>
+  <div class="example-button-container">
+    <input matInput placeholder="Placeholder" />
+    <button
+      mat-fab
+      color="primary"
+      aria-label="Example icon button with a delete icon"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>
